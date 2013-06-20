@@ -53,9 +53,17 @@ require_relative '../app/models/legislator'
 
 def active_by_state
   
+  representatives = Legislator.where('in_office = 1 AND title = "Rep" ').group('state').group('title').count.sort{|a,b| b[1] <=> a[1]}
+  senators = Legislator.where('in_office = 1 AND title = "Sen" ').group('state').group('title').count
+  p representatives
+  # p "#{representatives[0][0][0]}: Senators: #{} Representatives: #{representatives[0][0]}"
+
+  #FFFUUUUUUUUUUUUUCCCCCKKKKK
+
+  
 end
 
-puts active_by_state
+ active_by_state
 
 
 
