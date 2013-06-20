@@ -5,4 +5,8 @@ class Legislator < ActiveRecord::Base
   validates :lastname, :presence => true
   validates :party, :presence => true
 
+
+  def summary
+    "Name: #{self.firstname} #{self.lastname} Title: #{self.title} State: #{self.state}"
+  end
 end

@@ -4,9 +4,9 @@ require_relative '../app/models/legislator'
 
 class SunlightLegislatorsImporter
   def self.import(filename=File.dirname(__FILE__) + "/../db/data/legislators.csv")
-    csv = CSV.new(File.open(filename), :headers => true)
+    csv = CSV.new(File.open(filename), :headers => true, :header_converters => :symbol )
     csv.each do |row|
-      legislator = Legislator.create!(row.to_hash)
+      Legislator.create!(row.to_hash)
     end
   end
 end
